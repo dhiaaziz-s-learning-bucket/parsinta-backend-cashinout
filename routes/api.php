@@ -1,4 +1,4 @@
-d<?php
+<?php
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,9 +26,10 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::prefix('cash')->group(function () {
         Route::get('/', [CashController::class, 'index']);
-        Route::get('/{id}', 'CashController@show');
+        // Route::get('/{id}', 'CashController@show');
         Route::post('/create', [CashController::class, 'store']);
-        Route::put('/{id}', 'CashController@update');
-        Route::delete('/{id}', 'CashController@destroy');
+        Route::get('{cash:slug}', [CashController::class, 'show']);
+        // Route::put('/{id}', 'CashController@update');
+        // Route::delete('/{id}', 'CashController@destroy');
     });
 });
